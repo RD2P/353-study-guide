@@ -1,12 +1,14 @@
 name: 353-study-guide
 
 services:
+
   frontend:
-    build: .
+    build: ./frontend
     ports:
       - 80:5173
     volumes:
-      - ./:/app/
+      - ./frontend:/app/
       - /app/node_modules
     stdin_open: true
     tty: true
+
