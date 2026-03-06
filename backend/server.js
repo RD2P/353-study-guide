@@ -20,12 +20,16 @@ app.use(express.json())
 
 app.get('/', (req,res)=> res.send("server ok..."))
 
-// GET /topics  – list all available topics
+// GET /topics  – list all available topics with question counts
 app.get('/topics', async (req, res) => {
   try {
-    const result = await pool.query(
-      'SELECT slug, name FROM topics ORDER BY name'
-    )
+    const result = await pool.query(`
+      SELECT t.slug, t.name, COUNT(qt.question_id)::int AS count
+      FROM topics t
+      LEFT JOIN question_topics qt ON qt.topic_id = t.id
+      GROUP BY t.id
+      ORDER BY t.name
+    `)
     res.json(result.rows)
   } catch (err) {
     console.error('Error fetching topics:', err)

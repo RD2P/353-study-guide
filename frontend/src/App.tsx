@@ -13,6 +13,7 @@ type Question = {
 type Topic = {
   slug: string
   name: string
+  count: number
 }
 
 function App() {
@@ -163,11 +164,15 @@ function App() {
             {topics.map(t => (
               <button
                 key={t.slug}
-                className={`topic-btn${selectedSlugs.has(t.slug) ? ' topic-btn--active' : ''}`}
+                className={`topic-btn${selectedSlugs.has(t.slug) ? ' topic-btn--active' : ''}${t.count === 0 ? ' topic-btn--empty' : ''}`}
                 onClick={() => toggleTopic(t.slug)}
+                disabled={t.count === 0}
               >
-                {selectedSlugs.has(t.slug) && <span className="topic-check">✓</span>}
-                {t.name}
+                <span className="topic-btn-name">
+                  {selectedSlugs.has(t.slug) && <span className="topic-check">✓</span>}
+                  {t.name}
+                </span>
+                <span className="topic-count">{t.count} Qs</span>
               </button>
             ))}
           </div>
