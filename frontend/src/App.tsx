@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import questions from '../question-bank.json'
+import { useState, useEffect } from 'react'
 import './App.css'
+
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:81'
 
 type Question = {
   question: string
@@ -9,13 +10,32 @@ type Question = {
 }
 
 function App() {
+  const [questions, setQuestions] = useState<Question[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selected, setSelected] = useState<string | null>(null)
   const [score, setScore] = useState(0)
   const [finished, setFinished] = useState(false)
 
-  const q: Question = (questions as Question[])[currentIndex]
-  const total = (questions as Question[]).length
+  useEffect(() => {
+    fetch(`${API_URL}/questions`)
+      .then(res => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`)
+        return res.json()
+      })
+      .then((data: Question[]) => {
+        setQuestions(data)
+        setLoading(false)
+      })
+      .catch(err => {
+        setError(err.message)
+        setLoading(false)
+      })
+  }, [])
+
+  const q: Question = questions[currentIndex]
+  const total = questions.length
 
   function handleSelect(option: string) {
     if (selected !== null) return
@@ -39,6 +59,14 @@ function App() {
     setSelected(null)
     setScore(0)
     setFinished(false)
+  }
+
+  if (loading) {
+    return <div className="quiz-container"><p>Loading questions...</p></div>
+  }
+
+  if (error) {
+    return <div className="quiz-container"><p>Error: {error}</p></div>
   }
 
   if (finished) {
