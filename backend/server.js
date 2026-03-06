@@ -20,19 +20,63 @@ app.use(express.json())
 
 app.get('/', (req,res)=> res.send("server ok..."))
 
+// GET /topics  – list all available topics
+app.get('/topics', async (req, res) => {
+  try {
+    const result = await pool.query(
+      'SELECT slug, name FROM topics ORDER BY name'
+    )
+    res.json(result.rows)
+  } catch (err) {
+    console.error('Error fetching topics:', err)
+    res.status(500).json({ error: 'Failed to fetch topics' })
+  }
+})
+
+// GET /questions?topic=<slug>  – optional topic filter
 app.get('/questions', async (req, res) => {
+  const { topic } = req.query
+
+  // Validate topic slug if provided
+  if (topic !== undefined && !/^[a-z0-9_-]+$/.test(topic)) {
+    return res.status(400).json({ error: 'Invalid topic slug' })
+  }
+
   try {
     const result = await pool.query(`
       SELECT
         q.id,
-        q.question_text AS question,
-        json_agg(o.option_text ORDER BY o.id) AS options,
-        MAX(CASE WHEN o.is_correct THEN o.option_text END) AS "correctAnswer"
+        q.question_text                                     AS question,
+        (
+          SELECT json_agg(o.option_text ORDER BY o.id)
+          FROM options o
+          WHERE o.question_id = q.id
+        )                                                   AS options,
+        (
+          SELECT o.option_text
+          FROM options o
+          WHERE o.question_id = q.id AND o.is_correct
+          LIMIT 1
+        )                                                   AS "correctAnswer",
+        COALESCE(
+          (
+            SELECT json_agg(t.slug)
+            FROM question_topics qt
+            JOIN topics t ON t.id = qt.topic_id
+            WHERE qt.question_id = q.id
+          ),
+          '[]'::json
+        )                                                   AS topics
       FROM questions q
-      JOIN options o ON o.question_id = q.id
-      GROUP BY q.id
+      WHERE ($1::text IS NULL OR EXISTS (
+        SELECT 1
+        FROM question_topics qt2
+        JOIN topics t2 ON t2.id = qt2.topic_id
+        WHERE qt2.question_id = q.id
+          AND t2.slug = $1
+      ))
       ORDER BY q.id
-    `)
+    `, [topic ?? null])
     res.json(result.rows)
   } catch (err) {
     console.error('Error fetching questions:', err)
