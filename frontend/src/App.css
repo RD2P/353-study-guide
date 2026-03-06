@@ -252,6 +252,24 @@
   margin: 0;
 }
 
+.stop-btn {
+  background: transparent;
+  border: 1px solid #4a2a2a;
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  color: #a06060;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  margin-left: auto;
+}
+
+.stop-btn:hover {
+  background: #3a1a1a;
+  border-color: #e53935;
+  color: #ef9a9a;
+}
+
 .quiz-header {
   display: flex;
   justify-content: space-between;

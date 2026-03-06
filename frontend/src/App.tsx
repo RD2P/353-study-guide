@@ -107,6 +107,12 @@ function App() {
     setFinished(false)
   }
 
+  function handleStopQuiz() {
+    if (window.confirm(`Stop the quiz? Your progress (${score}/${currentIndex + (selected !== null ? 1 : 0)}) will be lost.`)) {
+      handleChangeTopic()
+    }
+  }
+
   const header = (
     <header className="site-header">
       <h1 className="site-title">CMPT 353 Winter 2026</h1>
@@ -216,6 +222,9 @@ function App() {
                 : `${activeSlugs.length} topics`}
             </span>
           )}
+          <button className="stop-btn" onClick={handleStopQuiz} title="Stop quiz">
+            ✕ Stop
+          </button>
         </div>
         <div className="question-card">
           <p className="question-text">{q.question}</p>
