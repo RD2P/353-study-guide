@@ -39,9 +39,9 @@ services:
       # named volume of postgres data
       - pgdata:/var/lib/postgresql/data
 
-      # host mount init.sql to proper place in docker container
-      # to run the script upon container start up
-      - ./backend/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql 
+      # host mount sql files to create tables and seed data on first container creation
+      - ./backend/scripts/01-init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./backend/scripts/02-seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
     env_file:
       - ./backend/.env
     healthcheck:
