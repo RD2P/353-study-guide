@@ -2,6 +2,9 @@
 
 An interactive multiple choice quiz app to help study for CMPT 353 Winter 2026.
 
+![image](images/home.png)
+![image](images/quiz.png)
+
 ## Features
 
 - Multiple choice questions with instant feedback
