@@ -17,7 +17,8 @@ type Topic = {
 
 function App() {
   const [topics, setTopics] = useState<Topic[]>([])
-  const [activeTopic, setActiveTopic] = useState<Topic | null>(null)
+  const [selectedSlugs, setSelectedSlugs] = useState<Set<string>>(new Set())
+  const [activeSlugs, setActiveSlugs] = useState<string[]>([])  // slugs used for current quiz
   const [phase, setPhase] = useState<'lobby' | 'quiz'>('lobby')
 
   const [questions, setQuestions] = useState<Question[]>([])
@@ -39,8 +40,16 @@ function App() {
       .catch(() => { /* topics list is non-fatal */ })
   }, [])
 
-  function startQuiz(topic: Topic | null) {
-    setActiveTopic(topic)
+  function toggleTopic(slug: string) {
+    setSelectedSlugs(prev => {
+      const next = new Set(prev)
+      next.has(slug) ? next.delete(slug) : next.add(slug)
+      return next
+    })
+  }
+
+  function startQuiz(slugs: string[]) {
+    setActiveSlugs(slugs)
     setLoading(true)
     setError(null)
     setCurrentIndex(0)
@@ -48,8 +57,8 @@ function App() {
     setScore(0)
     setFinished(false)
 
-    const url = topic
-      ? `${API_URL}/questions?topic=${topic.slug}`
+    const url = slugs.length
+      ? `${API_URL}/questions?topics=${slugs.join(',')}`
       : `${API_URL}/questions`
 
     fetch(url)
@@ -89,10 +98,11 @@ function App() {
   }
 
   function handleRestart() {
-    startQuiz(activeTopic)
+    startQuiz(activeSlugs)
   }
 
   function handleChangeTopic() {
+    setSelectedSlugs(new Set(activeSlugs))
     setPhase('lobby')
     setFinished(false)
   }
@@ -105,11 +115,14 @@ function App() {
   )
 
   if (loading) {
+    const label = activeSlugs.length
+      ? topics.filter(t => activeSlugs.includes(t.slug)).map(t => t.name).join(', ')
+      : 'All Topics'
     return (
       <div className="page-wrapper">
         {header}
         <div className="quiz-container">
-          <p className="status-msg">Loading questions{activeTopic ? ` for ${activeTopic.name}` : ''}...</p>
+          <p className="status-msg">Loading questions for <strong>{label}</strong>...</p>
         </div>
       </div>
     )
@@ -128,20 +141,39 @@ function App() {
   }
 
   if (phase === 'lobby') {
+    const allSelected = selectedSlugs.size === 0
+    const startLabel = selectedSlugs.size === 0
+      ? 'Start Quiz — All Topics'
+      : `Start Quiz — ${selectedSlugs.size} topic${selectedSlugs.size > 1 ? 's' : ''}`
     return (
       <div className="page-wrapper">
         {header}
         <div className="quiz-container">
-          <h2 className="section-title">Choose a Topic</h2>
+          <h2 className="section-title">Choose Topics</h2>
+          <p className="lobby-hint">
+            {allSelected ? 'All topics selected.' : `${selectedSlugs.size} topic${selectedSlugs.size > 1 ? 's' : ''} selected`}
+          </p>
           <div className="topic-grid">
-            <button className="topic-btn topic-btn--all" onClick={() => startQuiz(null)}>
-              All Topics
-            </button>
             {topics.map(t => (
-              <button key={t.slug} className="topic-btn" onClick={() => startQuiz(t)}>
+              <button
+                key={t.slug}
+                className={`topic-btn${selectedSlugs.has(t.slug) ? ' topic-btn--active' : ''}`}
+                onClick={() => toggleTopic(t.slug)}
+              >
+                {selectedSlugs.has(t.slug) && <span className="topic-check">✓</span>}
                 {t.name}
               </button>
             ))}
+          </div>
+          <div className="lobby-actions">
+            {selectedSlugs.size > 0 && (
+              <button className="next-btn next-btn--secondary" onClick={() => setSelectedSlugs(new Set())}>
+                Clear
+              </button>
+            )}
+            <button className="next-btn" onClick={() => startQuiz([...selectedSlugs])}>
+              {startLabel}
+            </button>
           </div>
         </div>
       </div>
@@ -150,17 +182,20 @@ function App() {
 
   if (finished) {
     const pct = Math.round((score / total) * 100)
+    const activeTopicNames = activeSlugs.length
+      ? topics.filter(t => activeSlugs.includes(t.slug)).map(t => t.name).join(', ')
+      : null
     return (
       <div className="page-wrapper">
         {header}
         <div className="quiz-container">
           <h2 className="section-title">Quiz Complete!</h2>
-          {activeTopic && <p className="topic-badge">{activeTopic.name}</p>}
+          {activeTopicNames && <p className="topic-badge">{activeTopicNames}</p>}
           <p className="final-score">You scored <strong>{score}</strong> out of <strong>{total}</strong></p>
           <p className="score-pct">{pct}%</p>
           <div className="result-actions">
             <button className="next-btn" onClick={handleRestart}>Retry</button>
-            <button className="next-btn next-btn--secondary" onClick={handleChangeTopic}>Change Topic</button>
+            <button className="next-btn next-btn--secondary" onClick={handleChangeTopic}>Change Topics</button>
           </div>
         </div>
       </div>
@@ -174,7 +209,13 @@ function App() {
         <div className="quiz-header">
           <span className="progress">Question {currentIndex + 1} / {total}</span>
           <span className="score">Score: {score}</span>
-          {activeTopic && <span className="topic-badge">{activeTopic.name}</span>}
+          {activeSlugs.length > 0 && (
+            <span className="topic-badge">
+              {activeSlugs.length === 1
+                ? topics.find(t => t.slug === activeSlugs[0])?.name
+                : `${activeSlugs.length} topics`}
+            </span>
+          )}
         </div>
         <div className="question-card">
           <p className="question-text">{q.question}</p>

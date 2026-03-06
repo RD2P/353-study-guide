@@ -164,6 +164,26 @@
   color: #646cff;
 }
 
+.lobby-hint {
+  font-size: 0.875rem;
+  color: #666;
+  margin: -0.5rem 0 0;
+}
+
+.lobby-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 0.5rem;
+}
+
+.lobby-actions .next-btn {
+  flex: 1;
+  max-width: 320px;
+}
+
 .result-actions {
   display: flex;
   gap: 0.75rem;
@@ -209,17 +229,15 @@
   color: #fff;
 }
 
-.topic-btn--all {
-  grid-column: 1 / -1;
-  background: #1a1a3a;
+.topic-btn--active {
+  background: #25254a;
   border-color: #646cff;
-  color: #a78bfa;
-  font-weight: 600;
+  color: #fff;
 }
 
-.topic-btn--all:hover {
-  background: #25254a;
-  color: #fff;
+.topic-check {
+  margin-right: 0.4rem;
+  color: #a78bfa;
 }
 
 .topic-badge {

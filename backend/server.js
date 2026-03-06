@@ -33,12 +33,16 @@ app.get('/topics', async (req, res) => {
   }
 })
 
-// GET /questions?topic=<slug>  – optional topic filter
+// GET /questions?topics=slug1,slug2  – optional comma-separated topic filter
 app.get('/questions', async (req, res) => {
-  const { topic } = req.query
+  const raw = req.query.topics
 
-  // Validate topic slug if provided
-  if (topic !== undefined && !/^[a-z0-9_-]+$/.test(topic)) {
+  // Parse and validate slugs
+  const slugs = raw
+    ? String(raw).split(',').map(s => s.trim()).filter(Boolean)
+    : []
+
+  if (slugs.some(s => !/^[a-z0-9_-]+$/.test(s))) {
     return res.status(400).json({ error: 'Invalid topic slug' })
   }
 
@@ -68,15 +72,15 @@ app.get('/questions', async (req, res) => {
           '[]'::json
         )                                                   AS topics
       FROM questions q
-      WHERE ($1::text IS NULL OR EXISTS (
+      WHERE ($1::text[] IS NULL OR EXISTS (
         SELECT 1
         FROM question_topics qt2
         JOIN topics t2 ON t2.id = qt2.topic_id
         WHERE qt2.question_id = q.id
-          AND t2.slug = $1
+          AND t2.slug = ANY($1::text[])
       ))
       ORDER BY q.id
-    `, [topic ?? null])
+    `, [slugs.length ? slugs : null])
     res.json(result.rows)
   } catch (err) {
     console.error('Error fetching questions:', err)
