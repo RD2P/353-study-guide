@@ -302,7 +302,6 @@
   color: #a06060;
   cursor: pointer;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
-  margin-left: auto;
 }
 
 .stop-btn:hover {
@@ -319,4 +318,5 @@
   max-width: 640px;
   font-size: 0.95rem;
   color: #aaa;
+  gap: 1rem;
 }
