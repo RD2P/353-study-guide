@@ -9,6 +9,7 @@ lerna-debug.log*
 
 .env
 NOTES.md
+tasks.txt
 
 node_modules
 dist
