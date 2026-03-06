@@ -61,27 +61,49 @@ function App() {
     setFinished(false)
   }
 
+  const header = (
+    <header className="site-header">
+      <h1 className="site-title">CMPT 353 Winter 2026</h1>
+      <p className="site-subtitle">Study Guide</p>
+    </header>
+  )
+
   if (loading) {
-    return <div className="quiz-container"><p>Loading questions...</p></div>
+    return (
+      <div className="page-wrapper">
+        {header}
+        <div className="quiz-container"><p className="status-msg">Loading questions...</p></div>
+      </div>
+    )
   }
 
   if (error) {
-    return <div className="quiz-container"><p>Error: {error}</p></div>
+    return (
+      <div className="page-wrapper">
+        {header}
+        <div className="quiz-container"><p className="status-msg error-msg">Error: {error}</p></div>
+      </div>
+    )
   }
 
   if (finished) {
     return (
-      <div className="quiz-container">
-        <h1>Quiz Complete!</h1>
-        <p className="final-score">You scored <strong>{score}</strong> out of <strong>{total}</strong></p>
-        <p className="score-pct">{Math.round((score / total) * 100)}%</p>
-        <button className="next-btn" onClick={handleRestart}>Restart Quiz</button>
+      <div className="page-wrapper">
+        {header}
+        <div className="quiz-container">
+          <h2 className="section-title">Quiz Complete!</h2>
+          <p className="final-score">You scored <strong>{score}</strong> out of <strong>{total}</strong></p>
+          <p className="score-pct">{Math.round((score / total) * 100)}%</p>
+          <button className="next-btn" onClick={handleRestart}>Restart Quiz</button>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="quiz-container">
+    <div className="page-wrapper">
+      {header}
+      <div className="quiz-container">
       <div className="quiz-header">
         <span className="progress">Question {currentIndex + 1} / {total}</span>
         <span className="score">Score: {score}</span>
@@ -121,6 +143,7 @@ function App() {
           {currentIndex + 1 >= total ? 'See Results' : 'Next Question'}
         </button>
       )}
+      </div>
     </div>
   )
 }

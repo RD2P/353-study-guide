@@ -1,8 +1,61 @@
 #root {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
   text-align: center;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.site-header {
+  width: 100%;
+  padding: 2.5rem 1rem 1.5rem;
+  border-bottom: 1px solid #2a2a2a;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #646cff 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.site-subtitle {
+  font-size: 0.95rem;
+  color: #888;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #eee;
+  margin: 0;
+}
+
+.status-msg {
+  color: #aaa;
+  font-size: 1.05rem;
+}
+
+.error-msg {
+  color: #ef9a9a;
 }
 
 .quiz-container {
