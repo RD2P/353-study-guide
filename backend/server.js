@@ -10,7 +10,9 @@ const PORT = 3000
 const pool = new Pool({ connectionString: process.env.DATABASE_URL })
 
 const app = express()
-app.use(cors())
+app.use(cors({
+  origin: 'https://353-study-guide.vercel.app/'
+}))
 app.use(express.json())
 
 app.get('/', (req,res)=> res.send("server ok..."))
