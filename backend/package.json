@@ -8,7 +8,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "generate-cache": "node --env-file=.env scripts/frontend-cache/generate-cache.js"
   },
   "dependencies": {
     "cors": "^2.8.6",
