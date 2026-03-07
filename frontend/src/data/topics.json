@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "cloud",
+    "name": "Cloud",
+    "count": 7
+  },
+  {
+    "slug": "containerization",
+    "name": "Containerization",
+    "count": 18
+  },
+  {
+    "slug": "css",
+    "name": "CSS",
+    "count": 4
+  },
+  {
+    "slug": "html",
+    "name": "HTML",
+    "count": 10
+  },
+  {
+    "slug": "http",
+    "name": "HTTP",
+    "count": 26
+  },
+  {
+    "slug": "js",
+    "name": "JavaScript",
+    "count": 25
+  },
+  {
+    "slug": "next",
+    "name": "Next.js",
+    "count": 1
+  },
+  {
+    "slug": "node",
+    "name": "Node / Express",
+    "count": 20
+  },
+  {
+    "slug": "react",
+    "name": "React",
+    "count": 13
+  },
+  {
+    "slug": "rest",
+    "name": "REST",
+    "count": 14
+  },
+  {
+    "slug": "sql",
+    "name": "SQL",
+    "count": 11
+  }
+]

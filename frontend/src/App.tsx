@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import cachedTopics from './data/topics.json'
+import cachedQuestions from './data/questions.json'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:81'
 
@@ -17,7 +19,7 @@ type Topic = {
 }
 
 function App() {
-  const [topics, setTopics] = useState<Topic[]>([])
+  const [topics, setTopics] = useState<Topic[]>(cachedTopics as Topic[])
   const [selectedSlugs, setSelectedSlugs] = useState<Set<string>>(new Set())
   const [activeSlugs, setActiveSlugs] = useState<string[]>([])  // slugs used for current quiz
   const [phase, setPhase] = useState<'lobby' | 'quiz'>('lobby')
@@ -51,13 +53,25 @@ function App() {
 
   function startQuiz(slugs: string[]) {
     setActiveSlugs(slugs)
-    setLoading(true)
     setError(null)
     setCurrentIndex(0)
     setSelected(null)
     setScore(0)
     setFinished(false)
 
+    // Show cached questions immediately so the quiz starts with no delay
+    const cached = (cachedQuestions as Question[]).filter(q =>
+      slugs.length === 0 || q.topics.some(t => slugs.includes(t))
+    )
+    if (cached.length > 0) {
+      setQuestions(cached)
+      setLoading(false)
+      setPhase('quiz')
+    } else {
+      setLoading(true)
+    }
+
+    // Fetch fresh data from backend silently; replace cache when it responds
     const url = slugs.length
       ? `${API_URL}/questions?topics=${slugs.join(',')}`
       : `${API_URL}/questions`
@@ -73,8 +87,11 @@ function App() {
         setPhase('quiz')
       })
       .catch(err => {
-        setError(err.message)
-        setLoading(false)
+        // Only surface the error if we have nothing to show
+        if (cached.length === 0) {
+          setError(err.message)
+          setLoading(false)
+        }
       })
   }
 
