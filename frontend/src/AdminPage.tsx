@@ -220,6 +220,7 @@ export default function AdminPage() {
       <header className="site-header">
         <h1 className="site-title">Admin</h1>
         <p className="site-subtitle">Question Management</p>
+        <p className="admin-page-desc">Review, add, edit, and delete quiz questions.</p>
       </header>
 
       <div className="admin-container">
@@ -249,7 +250,7 @@ export default function AdminPage() {
           onChange={e => setSearch(e.target.value)}
         />
 
-        {loading && <p className="status-msg">Loading…</p>}
+        {loading && <p className="status-msg">Loading… (may take up to 60s for backend service cold-start on first visit)</p>}
         {err && <p className="status-msg error-msg">{err}</p>}
 
         {/* Question list */}

@@ -441,6 +441,12 @@
 }
 
 /* ── Admin Page ──────────────────────────────────────────── */
+.admin-page-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.25rem 0 0;
+}
+
 .admin-container {
   width: 100%;
   max-width: 760px;
