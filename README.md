@@ -81,4 +81,21 @@ docker compose down -v
 docker compose up -d
 ```
 
+## Updating the question cache
+
+The frontend ships with a static snapshot of all questions in `frontend/src/data/`.
+This is used as an instant fallback while the Render backend cold-starts (free tier
+spins down after inactivity). After adding new questions to the database, regenerate
+the cache and commit it:
+
+```bash
+cd backend
+npm run generate-cache
+cp scripts/frontend-cache/out/*.json ../frontend/src/data/
+cd ..
+git add frontend/src/data/
+git commit -m "chore: refresh question cache"
+git push
+```
+
 Author: Raphael
