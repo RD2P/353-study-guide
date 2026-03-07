@@ -18,6 +18,15 @@ type Topic = {
   count: number
 }
 
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 function App() {
   const [topics, setTopics] = useState<Topic[]>(cachedTopics as Topic[])
   const [selectedSlugs, setSelectedSlugs] = useState<Set<string>>(new Set())
@@ -66,7 +75,7 @@ function App() {
       slugs.length === 0 || q.topics.some(t => slugs.includes(t))
     )
     if (cached.length > 0) {
-      setQuestions(cached)
+      setQuestions(shuffle(cached))
       setLoading(false)
       setPhase('quiz')
     } else {
@@ -84,9 +93,12 @@ function App() {
         return res.json()
       })
       .then((data: Question[]) => {
-        setQuestions(data)
-        setLoading(false)
-        setPhase('quiz')
+        // Only replace if cache had nothing, avoids reshuffling mid-quiz
+        if (cached.length === 0) {
+          setQuestions(shuffle(data))
+          setLoading(false)
+          setPhase('quiz')
+        }
       })
       .catch(err => {
         // Only surface the error if we have nothing to show
