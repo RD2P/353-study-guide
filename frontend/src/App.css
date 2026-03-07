@@ -64,6 +64,7 @@
   align-items: center;
   gap: 1.5rem;
   padding: 2rem 1rem;
+  width: 100%;
 }
 
 .question-card {
@@ -342,4 +343,99 @@
   font-size: 0.95rem;
   color: #aaa;
   gap: 1rem;
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  #root {
+    padding: 0 1rem 2rem;
+  }
+
+  .site-header {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .site-title {
+    font-size: 1.4rem;
+  }
+
+  .site-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .quiz-container {
+    gap: 1rem;
+    padding: 1.25rem 0;
+    width: 100%;
+  }
+
+  .question-card {
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+
+  .question-text {
+    font-size: 1rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .option-btn {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.85rem;
+  }
+
+  /* quiz-header: wrap score below progress on very small screens */
+  .quiz-header {
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .stop-btn {
+    margin-left: auto;
+  }
+
+  /* full-width action buttons */
+  .next-btn,
+  .skip-btn {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.85rem 1rem;
+  }
+
+  .lobby-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lobby-actions .next-btn {
+    max-width: 100%;
+  }
+
+  .result-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .result-actions .next-btn {
+    width: 100%;
+  }
+
+  .topic-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .score-pct {
+    font-size: 2.25rem;
+  }
+
+  .final-score {
+    font-size: 1.15rem;
+  }
 }
