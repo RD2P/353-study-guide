@@ -42,6 +42,12 @@ services:
       # host mount sql files to create tables and seed data on first container creation
       - ./backend/scripts/01-init.sql:/docker-entrypoint-initdb.d/01-init.sql
       - ./backend/scripts/02-seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
+      - ./backend/scripts/03-add-topics.sql:/docker-entrypoint-initdb.d/03-add-topics.sql
+      - ./backend/scripts/04-seed-containerization.sql:/docker-entrypoint-initdb.d/04-seed-containerization.sql
+      - ./backend/scripts/05-seed-js-html-http.sql:/docker-entrypoint-initdb.d/05-seed-js-html-http.sql
+      - ./backend/scripts/06-seed-js-ts-react.sql:/docker-entrypoint-initdb.d/06-seed-js-ts-react.sql
+      - ./backend/scripts/07-seed-sql-react-rest.sql:/docker-entrypoint-initdb.d/07-seed-sql-react-rest.sql
+      - ./backend/scripts/08-seed-rest-mcp-nosql-llm.sql:/docker-entrypoint-initdb.d/08-seed-rest-mcp-nosql-llm.sql
     env_file:
       - ./backend/.env
     healthcheck:
