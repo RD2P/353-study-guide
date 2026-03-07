@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import cachedTopics from './data/topics.json'
 import cachedQuestions from './data/questions.json'
+import AdminPage from './AdminPage'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:81'
 
@@ -27,7 +29,7 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
-function App() {
+function QuizApp() {
   const [topics, setTopics] = useState<Topic[]>(cachedTopics as Topic[])
   const [selectedSlugs, setSelectedSlugs] = useState<Set<string>>(new Set())
   const [activeSlugs, setActiveSlugs] = useState<string[]>([])  // slugs used for current quiz
@@ -315,6 +317,15 @@ function App() {
         )}
       </div>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<QuizApp />} />
+      <Route path="/admin" element={<AdminPage />} />
+    </Routes>
   )
 }
 
