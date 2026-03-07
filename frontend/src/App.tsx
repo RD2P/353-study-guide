@@ -30,6 +30,7 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selected, setSelected] = useState<string | null>(null)
   const [score, setScore] = useState(0)
+  const [skipped, setSkipped] = useState(0)
   const [finished, setFinished] = useState(false)
 
   // Fetch topic list once on mount
@@ -57,6 +58,7 @@ function App() {
     setCurrentIndex(0)
     setSelected(null)
     setScore(0)
+    setSkipped(0)
     setFinished(false)
 
     // Show cached questions immediately so the quiz starts with no delay
@@ -107,6 +109,16 @@ function App() {
   }
 
   function handleNext() {
+    if (currentIndex + 1 >= total) {
+      setFinished(true)
+    } else {
+      setCurrentIndex(i => i + 1)
+      setSelected(null)
+    }
+  }
+
+  function handleSkip() {
+    setSkipped(s => s + 1)
     if (currentIndex + 1 >= total) {
       setFinished(true)
     } else {
@@ -220,6 +232,7 @@ function App() {
           <h2 className="section-title">Quiz Complete!</h2>
           {activeTopicNames && <p className="topic-badge">{activeTopicNames}</p>}
           <p className="final-score">You scored <strong>{score}</strong> out of <strong>{total}</strong></p>
+          {skipped > 0 && <p className="skipped-count">{skipped} question{skipped > 1 ? 's' : ''} skipped</p>}
           <p className="score-pct">{pct}%</p>
           <div className="result-actions">
             <button className="next-btn" onClick={handleRestart}>Retry</button>
@@ -278,6 +291,11 @@ function App() {
             </div>
           )}
         </div>
+        {selected === null && (
+          <button className="skip-btn" onClick={handleSkip}>
+            {currentIndex + 1 >= total ? 'Skip & See Results' : 'Skip Question'}
+          </button>
+        )}
         {selected !== null && (
           <button className="next-btn" onClick={handleNext}>
             {currentIndex + 1 >= total ? 'See Results' : 'Next Question'}
