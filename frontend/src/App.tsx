@@ -229,6 +229,11 @@ function QuizApp() {
               {startLabel}
             </button>
           </div>
+          <div className="contributor-invite">
+            <p>
+              Want to add or improve questions? <br/> <span className="discord-handle">DM me on Discord</span> and I&rsquo;ll give you access to the question editor.
+            </p>
+          </div>
         </div>
       </div>
     )
