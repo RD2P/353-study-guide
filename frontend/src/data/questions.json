@@ -1,21 +1,6 @@
 [
   {
     "id": 1,
-    "question": "Which component of full stack development includes UI, layout, and user interaction?",
-    "options": [
-      "Back-end technologies",
-      "Database technologies",
-      "Front-end technologies",
-      "Deployment and hosting"
-    ],
-    "correctAnswer": "Front-end technologies",
-    "topics": [
-      "css",
-      "html"
-    ]
-  },
-  {
-    "id": 2,
     "question": "Which of the following is a front-end framework?",
     "options": [
       "Django",
@@ -29,7 +14,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 2,
     "question": "Which component handles data storage, processing, and retrieval?",
     "options": [
       "Front-end technologies",
@@ -43,7 +28,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "question": "Which of the following is a back-end programming language?",
     "options": [
       "HTML",
@@ -57,7 +42,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": 4,
     "question": "Which of the following is a back-end framework?",
     "options": [
       "Angular",
@@ -71,21 +56,7 @@
     ]
   },
   {
-    "id": 6,
-    "question": "Which technology is used to store and retrieve application data?",
-    "options": [
-      "Database technologies",
-      "Front-end frameworks",
-      "Hypervisors",
-      "WebAssembly"
-    ],
-    "correctAnswer": "Database technologies",
-    "topics": [
-      "sql"
-    ]
-  },
-  {
-    "id": 7,
+    "id": 5,
     "question": "Which of the following is a database management system (DBMS)?",
     "options": [
       "React",
@@ -99,7 +70,7 @@
     ]
   },
   {
-    "id": 8,
+    "id": 6,
     "question": "What does CRUD stand for?",
     "options": [
       "Create, Run, Update, Deploy",
@@ -114,7 +85,7 @@
     ]
   },
   {
-    "id": 9,
+    "id": 7,
     "question": "Which HTTP method is typically used for retrieving data?",
     "options": [
       "POST",
@@ -129,7 +100,7 @@
     ]
   },
   {
-    "id": 10,
+    "id": 8,
     "question": "Which HTTP method is typically associated with creating new resources?",
     "options": [
       "GET",
@@ -144,7 +115,7 @@
     ]
   },
   {
-    "id": 11,
+    "id": 9,
     "question": "What is stateless communication?",
     "options": [
       "The server stores client session state permanently",
@@ -159,7 +130,7 @@
     ]
   },
   {
-    "id": 12,
+    "id": 10,
     "question": "What is the role of a hypervisor?",
     "options": [
       "Manages front-end frameworks",
@@ -173,7 +144,7 @@
     ]
   },
   {
-    "id": 13,
+    "id": 11,
     "question": "Which statement best describes a virtual machine?",
     "options": [
       "A lightweight package sharing the host OS kernel",
@@ -187,7 +158,7 @@
     ]
   },
   {
-    "id": 14,
+    "id": 12,
     "question": "Which statement best describes a container?",
     "options": [
       "Runs a full separate OS on a hypervisor",
@@ -201,7 +172,7 @@
     ]
   },
   {
-    "id": 15,
+    "id": 13,
     "question": "Which tools are commonly used for deployment and orchestration?",
     "options": [
       "HTML and CSS",
@@ -216,21 +187,7 @@
     ]
   },
   {
-    "id": 16,
-    "question": "What is the primary purpose of a development environment in software development?",
-    "options": [
-      "To deploy applications to production servers",
-      "To provide tools and libraries needed to build and test software",
-      "To replace operating systems",
-      "To eliminate the need for programming languages"
-    ],
-    "correctAnswer": "To provide tools and libraries needed to build and test software",
-    "topics": [
-      "containerization"
-    ]
-  },
-  {
-    "id": 17,
+    "id": 14,
     "question": "Why can local development environments cause problems across different projects?",
     "options": [
       "Different projects may require different versions of libraries or dependencies",
@@ -244,7 +201,7 @@
     ]
   },
   {
-    "id": 18,
+    "id": 15,
     "question": "What is the main difference between virtual machines and containers?",
     "options": [
       "Virtual machines share the host OS kernel while containers run separate operating systems",
@@ -258,7 +215,7 @@
     ]
   },
   {
-    "id": 19,
+    "id": 16,
     "question": "Why are virtual machines considered more resource intensive than containers?",
     "options": [
       "Each virtual machine runs its own full operating system",
@@ -272,7 +229,7 @@
     ]
   },
   {
-    "id": 20,
+    "id": 17,
     "question": "What is the role of a Dockerfile?",
     "options": [
       "To run a container instance",
@@ -286,7 +243,7 @@
     ]
   },
   {
-    "id": 21,
+    "id": 18,
     "question": "What is a Docker image?",
     "options": [
       "A running container instance",
@@ -300,7 +257,7 @@
     ]
   },
   {
-    "id": 22,
+    "id": 19,
     "question": "What does the `docker run` command do?",
     "options": [
       "Creates a Dockerfile",
@@ -314,7 +271,7 @@
     ]
   },
   {
-    "id": 23,
+    "id": 20,
     "question": "Why is the `EXPOSE` instruction used in a Dockerfile?",
     "options": [
       "To automatically publish a port to the internet",
@@ -328,7 +285,7 @@
     ]
   },
   {
-    "id": 24,
+    "id": 21,
     "question": "What does the `-p 80:8080` option in `docker run` do?",
     "options": [
       "Maps port 8080 on the host to port 80 in the container",
@@ -342,7 +299,7 @@
     ]
   },
   {
-    "id": 25,
+    "id": 22,
     "question": "What is the purpose of mounting a volume using the `-v` flag in Docker?",
     "options": [
       "To delete files inside a container",
@@ -356,7 +313,7 @@
     ]
   },
   {
-    "id": 26,
+    "id": 23,
     "question": "What is the main purpose of `docker-compose.yml`?",
     "options": [
       "To build a single Docker image",
@@ -370,7 +327,7 @@
     ]
   },
   {
-    "id": 27,
+    "id": 24,
     "question": "What does the `WORKDIR` instruction in a Dockerfile do?",
     "options": [
       "Creates a new container",
@@ -384,7 +341,7 @@
     ]
   },
   {
-    "id": 28,
+    "id": 25,
     "question": "What is the purpose of the `CMD` instruction in a Dockerfile?",
     "options": [
       "Specifies the default command executed when a container starts",
@@ -398,7 +355,7 @@
     ]
   },
   {
-    "id": 29,
+    "id": 26,
     "question": "Why might developers prefer containers over local environments for development?",
     "options": [
       "Containers guarantee identical environments across systems",
@@ -412,45 +369,7 @@
     ]
   },
   {
-    "id": 30,
-    "question": "Who is credited with inventing the World Wide Web in 1989?",
-    "options": null,
-    "correctAnswer": null,
-    "topics": [
-      "html",
-      "http"
-    ]
-  },
-  {
-    "id": 31,
-    "question": "What is a key trend in HTML5 development towards better web standards?",
-    "options": [
-      "Increasing procedural code",
-      "Clearer semantics and declarative constructs",
-      "Reducing support for media",
-      "Eliminating compatibility with older versions"
-    ],
-    "correctAnswer": "Clearer semantics and declarative constructs",
-    "topics": [
-      "html"
-    ]
-  },
-  {
-    "id": 32,
-    "question": "In HTML, what does the <!DOCTYPE html> declaration specify?",
-    "options": [
-      "The character encoding",
-      "The HTML version to use",
-      "A comment in the code",
-      "The root element of the document"
-    ],
-    "correctAnswer": "The HTML version to use",
-    "topics": [
-      "html"
-    ]
-  },
-  {
-    "id": 33,
+    "id": 27,
     "question": "Which of the following is a correct example of a self-closing tag in HTML?",
     "options": [
       "<p>Text</p>",
@@ -464,7 +383,7 @@
     ]
   },
   {
-    "id": 34,
+    "id": 28,
     "question": "What is the purpose of attributes in HTML tags?",
     "options": [
       "To define the structure of the document",
@@ -478,7 +397,7 @@
     ]
   },
   {
-    "id": 35,
+    "id": 29,
     "question": "In CSS, what does a selector like '.ralph1' represent?",
     "options": [
       "A tag selector",
@@ -492,7 +411,7 @@
     ]
   },
   {
-    "id": 36,
+    "id": 30,
     "question": "What does the CSS selector 'h1 h2' select?",
     "options": [
       "h2 elements that are direct children of h1",
@@ -506,7 +425,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 31,
     "question": "In the DOM manipulation example, what does document.getElementById('p1').innerHTML do?",
     "options": [
       "Changes the color of the element",
@@ -521,7 +440,7 @@
     ]
   },
   {
-    "id": 38,
+    "id": 32,
     "question": "Which layer of the communication stack is responsible for reliable, ordered communication like TCP?",
     "options": [
       "Physical Layer",
@@ -535,7 +454,7 @@
     ]
   },
   {
-    "id": 39,
+    "id": 33,
     "question": "What is a key difference between TCP and UDP?",
     "options": [
       "TCP provides guaranteed delivery, UDP does not",
@@ -549,7 +468,7 @@
     ]
   },
   {
-    "id": 40,
+    "id": 34,
     "question": "How does DNS primarily function in the web?",
     "options": [
       "By translating domain names to IP addresses",
@@ -563,7 +482,7 @@
     ]
   },
   {
-    "id": 41,
+    "id": 35,
     "question": "What feature was introduced in HTTP/1.1 to reuse TCP connections?",
     "options": [
       "Pipelining",
@@ -577,7 +496,7 @@
     ]
   },
   {
-    "id": 42,
+    "id": 36,
     "question": "In HTTP/2, what solves head-of-line blocking at the application layer?",
     "options": [
       "Multiple TCP connections",
@@ -591,7 +510,7 @@
     ]
   },
   {
-    "id": 43,
+    "id": 37,
     "question": "Which HTTP method is used to submit data to be processed, often from forms?",
     "options": [
       "GET",
@@ -606,7 +525,7 @@
     ]
   },
   {
-    "id": 44,
+    "id": 38,
     "question": "What does it mean for an HTTP method to be 'idempotent'?",
     "options": [
       "It can be cached by browsers",
@@ -621,8 +540,8 @@
     ]
   },
   {
-    "id": 45,
-    "question": "Which HTTP status code category indicates client errors, like 404?",
+    "id": 39,
+    "question": "Which HTTP status code category indicates client errors?",
     "options": [
       "1xx",
       "2xx",
@@ -635,7 +554,7 @@
     ]
   },
   {
-    "id": 46,
+    "id": 40,
     "question": "In JavaScript, what is the difference between 'let' and 'var' regarding scope?",
     "options": [
       "let is function-scoped, var is block-scoped",
@@ -649,7 +568,7 @@
     ]
   },
   {
-    "id": 47,
+    "id": 41,
     "question": "What happens when accessing a 'let' variable before its declaration due to hoisting?",
     "options": [
       "It returns undefined",
@@ -663,7 +582,7 @@
     ]
   },
   {
-    "id": 48,
+    "id": 42,
     "question": "In JavaScript, what does the 'this' keyword refer to in a method inside an object?",
     "options": [
       "The global object",
@@ -677,7 +596,7 @@
     ]
   },
   {
-    "id": 49,
+    "id": 43,
     "question": "Why can't functions be included in JSON data?",
     "options": [
       "JSON is a text format for data only",
@@ -691,7 +610,7 @@
     ]
   },
   {
-    "id": 50,
+    "id": 44,
     "question": "In Node.js, what does 'require()' do?",
     "options": [
       "Executes a function immediately",
@@ -706,7 +625,7 @@
     ]
   },
   {
-    "id": 51,
+    "id": 45,
     "question": "What is the role of 'module.exports' in Node.js?",
     "options": [
       "To import modules",
@@ -721,23 +640,7 @@
     ]
   },
   {
-    "id": 52,
-    "question": "In a basic Node.js HTTP server, what handles incoming requests?",
-    "options": [
-      "A callback function in createServer",
-      "The Express framework automatically",
-      "JSON.stringify",
-      "module.exports"
-    ],
-    "correctAnswer": "A callback function in createServer",
-    "topics": [
-      "js",
-      "node",
-      "http"
-    ]
-  },
-  {
-    "id": 53,
+    "id": 46,
     "question": "What advantage does Express provide over the built-in HTTP module in Node.js?",
     "options": [
       "It handles DNS resolution",
@@ -752,7 +655,7 @@
     ]
   },
   {
-    "id": 54,
+    "id": 47,
     "question": "In Node.js servers, why might server state like a counter reset on restart?",
     "options": [
       "State is stored in memory per process",
@@ -767,7 +670,7 @@
     ]
   },
   {
-    "id": 55,
+    "id": 48,
     "question": "What is a conceptual benefit of HTTP/3 using QUIC over UDP?",
     "options": [
       "It guarantees packet order",
@@ -781,7 +684,7 @@
     ]
   },
   {
-    "id": 56,
+    "id": 49,
     "question": "How does nesting work in HTML tags?",
     "options": [
       "Tags cannot be nested",
@@ -795,21 +698,7 @@
     ]
   },
   {
-    "id": 57,
-    "question": "In CSS, what does the ':hover' pseudo-class select?",
-    "options": [
-      "Visited links",
-      "Active links",
-      "Elements with mouse over them",
-      "Unvisited links"
-    ],
-    "correctAnswer": "Elements with mouse over them",
-    "topics": [
-      "css"
-    ]
-  },
-  {
-    "id": 58,
+    "id": 50,
     "question": "What is the primary use of the HEAD HTTP method?",
     "options": [
       "To retrieve full resource content",
@@ -824,7 +713,7 @@
     ]
   },
   {
-    "id": 59,
+    "id": 51,
     "question": "In JavaScript, what is an arrow function primarily used for?",
     "options": [
       "To define classes",
@@ -838,21 +727,7 @@
     ]
   },
   {
-    "id": 60,
-    "question": "In the provided Dockerfile example, what is the base image used?",
-    "options": [
-      "node:alpine",
-      "node:latest",
-      "ubuntu:latest",
-      "python:3.9"
-    ],
-    "correctAnswer": "node:latest",
-    "topics": [
-      "node"
-    ]
-  },
-  {
-    "id": 61,
+    "id": 52,
     "question": "What command is used to start the Docker container in detached mode?",
     "options": [
       "docker run -d",
@@ -866,21 +741,7 @@
     ]
   },
   {
-    "id": 62,
-    "question": "In Express.js, what endpoint returns 'hello'?",
-    "options": [
-      "/hello",
-      "/greeting",
-      "/",
-      "/state"
-    ],
-    "correctAnswer": "/greeting",
-    "topics": [
-      "node"
-    ]
-  },
-  {
-    "id": 63,
+    "id": 53,
     "question": "What is the purpose of 'app.use('/', express.static('pages'));' in Express?",
     "options": [
       "To handle dynamic routes",
@@ -894,7 +755,7 @@
     ]
   },
   {
-    "id": 64,
+    "id": 54,
     "question": "What API is referenced for asynchronous calls in the browser?",
     "options": [
       "Axios",
@@ -909,64 +770,7 @@
     ]
   },
   {
-    "id": 65,
-    "question": "Which chapter in the JS Book covers Promises?",
-    "options": [
-      "Chapter 29",
-      "Chapter 30",
-      "Chapter 42",
-      "Chapter 21"
-    ],
-    "correctAnswer": "Chapter 42",
-    "topics": [
-      "js"
-    ]
-  },
-  {
-    "id": 66,
-    "question": "What is the focus of Chapter 30 in the JS Book?",
-    "options": [
-      "Callbacks",
-      "Interval & Timeouts",
-      "Promises",
-      "Async/Await"
-    ],
-    "correctAnswer": "Interval & Timeouts",
-    "topics": [
-      "js"
-    ]
-  },
-  {
-    "id": 67,
-    "question": "Who started the personal project that became the Web in 1989?",
-    "options": [
-      "Ted Nelson",
-      "Vannevar Bush",
-      "Tim Berners-Lee",
-      "Jorge Luis Borges"
-    ],
-    "correctAnswer": "Tim Berners-Lee",
-    "topics": [
-      "http",
-      "html"
-    ]
-  },
-  {
-    "id": 68,
-    "question": "What is Ted Nelson associated with in hypertext history?",
-    "options": [
-      "Memex",
-      "Xanadu",
-      "Book-Wheel",
-      "The Garden of Forking Paths"
-    ],
-    "correctAnswer": "Xanadu",
-    "topics": [
-      "html"
-    ]
-  },
-  {
-    "id": 69,
+    "id": 55,
     "question": "What tool is recommended for simple load testing in Node.js?",
     "options": [
       "JMeter",
@@ -980,36 +784,7 @@
     ]
   },
   {
-    "id": 70,
-    "question": "How is loadtest installed globally via npm?",
-    "options": [
-      "npm install loadtest",
-      "npm install -g loadtest",
-      "pip install loadtest",
-      "yarn add loadtest"
-    ],
-    "correctAnswer": "npm install -g loadtest",
-    "topics": [
-      "node"
-    ]
-  },
-  {
-    "id": 71,
-    "question": "What flag specifies the HTTP method as POST in the loadtest CLI?",
-    "options": [
-      "-method POST",
-      "-m POST",
-      "-type POST",
-      "-http POST"
-    ],
-    "correctAnswer": "-m POST",
-    "topics": [
-      "http",
-      "node"
-    ]
-  },
-  {
-    "id": 72,
+    "id": 56,
     "question": "What rule should be kept in mind for JS execution order?",
     "options": [
       "Async first, then sync",
@@ -1023,66 +798,7 @@
     ]
   },
   {
-    "id": 73,
-    "question": "What Node.js version is recommended for using the built-in fetch?",
-    "options": [
-      "Node 16+",
-      "Node 18+",
-      "Node 14+",
-      "Node 20+"
-    ],
-    "correctAnswer": "Node 18+",
-    "topics": [
-      "node",
-      "js"
-    ]
-  },
-  {
-    "id": 74,
-    "question": "Which component handles asynchronous operations like I/O in the JS runtime?",
-    "options": [
-      "Call Stack",
-      "Node API",
-      "Microtasks",
-      "Event Loop"
-    ],
-    "correctAnswer": "Node API",
-    "topics": [
-      "node",
-      "js"
-    ]
-  },
-  {
-    "id": 75,
-    "question": "What is the role of the Event Loop in the JS runtime?",
-    "options": [
-      "To execute synchronous code",
-      "To manage the call stack",
-      "To move tasks from queues to the call stack when it's empty",
-      "To handle memory allocation"
-    ],
-    "correctAnswer": "To move tasks from queues to the call stack when it's empty",
-    "topics": [
-      "node",
-      "js"
-    ]
-  },
-  {
-    "id": 76,
-    "question": "When was TypeScript 1.0 announced?",
-    "options": [
-      "2012",
-      "2014",
-      "2016",
-      "2010"
-    ],
-    "correctAnswer": "2014",
-    "topics": [
-      "js"
-    ]
-  },
-  {
-    "id": 77,
+    "id": 57,
     "question": "What is a key design choice of TypeScript?",
     "options": [
       "It runs natively in browsers",
@@ -1096,21 +812,7 @@
     ]
   },
   {
-    "id": 78,
-    "question": "In what year was React open-sourced?",
-    "options": [
-      "2011",
-      "2012",
-      "2013",
-      "2014"
-    ],
-    "correctAnswer": "2013",
-    "topics": [
-      "react"
-    ]
-  },
-  {
-    "id": 79,
+    "id": 58,
     "question": "What is a core design goal of React?",
     "options": [
       "Separation of UI and logic",
@@ -1124,7 +826,7 @@
     ]
   },
   {
-    "id": 80,
+    "id": 59,
     "question": "How is UI written in React?",
     "options": [
       "As a sequence of DOM manipulations",
@@ -1138,21 +840,7 @@
     ]
   },
   {
-    "id": 81,
-    "question": "What command creates a Vite + React + TypeScript project?",
-    "options": [
-      "npm init react-app",
-      "npm create vite@latest my-react-app",
-      "create-react-app my-app",
-      "vite create my-app"
-    ],
-    "correctAnswer": "npm create vite@latest my-react-app",
-    "topics": [
-      "react"
-    ]
-  },
-  {
-    "id": 82,
+    "id": 60,
     "question": "In React, what are props most like?",
     "options": [
       "Global variables",
@@ -1166,95 +854,7 @@
     ]
   },
   {
-    "id": 83,
-    "question": "Why is the 'children' prop useful in React?",
-    "options": [
-      "To pass styles",
-      "To wrap arbitrary nested UI",
-      "To handle events",
-      "To manage state"
-    ],
-    "correctAnswer": "To wrap arbitrary nested UI",
-    "topics": [
-      "react"
-    ]
-  },
-  {
-    "id": 84,
-    "question": "What does the React Compiler often replace?",
-    "options": [
-      "useState and useEffect",
-      "useMemo, useCallback, React.memo",
-      "fetch and async/await",
-      "Components and props"
-    ],
-    "correctAnswer": "useMemo, useCallback, React.memo",
-    "topics": [
-      "react"
-    ]
-  },
-  {
-    "id": 85,
-    "question": "What hook is used for 'fetch on mount' in React components?",
-    "options": [
-      "useState",
-      "useEffect",
-      "useCallback",
-      "useMemo"
-    ],
-    "correctAnswer": "useEffect",
-    "topics": [
-      "js",
-      "react"
-    ]
-  },
-  {
-    "id": 86,
-    "question": "Why check 'res.ok' before 'res.json()' in a fetch call?",
-    "options": [
-      "To parse JSON early",
-      "fetch doesn't reject on HTTP errors",
-      "To handle CORS",
-      "To cache the response"
-    ],
-    "correctAnswer": "fetch doesn't reject on HTTP errors",
-    "topics": [
-      "http",
-      "js",
-      "react"
-    ]
-  },
-  {
-    "id": 87,
-    "question": "In the relational model, what term refers to the number of tuples (rows) currently in a relation?",
-    "options": [
-      "Degree",
-      "Arity",
-      "Cardinality",
-      "Domain"
-    ],
-    "correctAnswer": "Cardinality",
-    "topics": [
-      "sql"
-    ]
-  },
-  {
-    "id": 88,
-    "question": "Which React hook is primarily used to define a getter and setter for managing state within a component?",
-    "options": [
-      "useEffect",
-      "useContext",
-      "useReducer",
-      "useState"
-    ],
-    "correctAnswer": "useState",
-    "topics": [
-      "js",
-      "react"
-    ]
-  },
-  {
-    "id": 89,
+    "id": 61,
     "question": "When using React Router, which component acts as the wrapper for client-side navigation?",
     "options": [
       "<Routes>",
@@ -1268,63 +868,7 @@
     ]
   },
   {
-    "id": 90,
-    "question": "In SQL, what is the primary difference between a Candidate Key and a Primary Key?",
-    "options": [
-      "A candidate key is minimal, while a primary key can include redundant columns.",
-      "A primary key is the specific candidate key chosen to uniquely identify tuples in a relation.",
-      "Primary keys are only used in physical databases, while candidate keys are theoretical.",
-      "Candidate keys allow NULL values, while primary keys do not."
-    ],
-    "correctAnswer": "A primary key is the specific candidate key chosen to uniquely identify tuples in a relation.",
-    "topics": [
-      "sql"
-    ]
-  },
-  {
-    "id": 91,
-    "question": "What is the result of an INNER JOIN where one student has no enrollments and one enrollment has no matching student?",
-    "options": [
-      "All students are included, with NULLs for missing enrollments.",
-      "All enrollments are included, with NULLs for missing students.",
-      "Only the 5 students with matching enrollment records are included.",
-      "A Cartesian product of all 6 students and all enrollment records."
-    ],
-    "correctAnswer": "Only the 5 students with matching enrollment records are included.",
-    "topics": [
-      "sql"
-    ]
-  },
-  {
-    "id": 92,
-    "question": "Which SQL JOIN type is commonly referred to as a Cartesian product?",
-    "options": [
-      "NATURAL JOIN",
-      "SELF JOIN",
-      "CROSS JOIN",
-      "FULL OUTER JOIN"
-    ],
-    "correctAnswer": "CROSS JOIN",
-    "topics": [
-      "sql"
-    ]
-  },
-  {
-    "id": 93,
-    "question": "At which SQL isolation level is a Dirty Read (reading uncommitted changes) possible?",
-    "options": [
-      "READ UNCOMMITTED",
-      "READ COMMITTED",
-      "REPEATABLE READ",
-      "SERIALIZABLE"
-    ],
-    "correctAnswer": "READ UNCOMMITTED",
-    "topics": [
-      "sql"
-    ]
-  },
-  {
-    "id": 94,
+    "id": 62,
     "question": "In Next.js App Router, what is a key difference between Server Components and Client Components?",
     "options": [
       "Server Components can use 'useState', while Client Components cannot.",
@@ -1339,7 +883,7 @@
     ]
   },
   {
-    "id": 95,
+    "id": 63,
     "question": "Which Richardson Maturity Model level uses resources (URIs) and HTTP verbs but not yet HATEOAS?",
     "options": [
       "Level 0",
@@ -1354,7 +898,7 @@
     ]
   },
   {
-    "id": 96,
+    "id": 64,
     "question": "According to REST principles, which HTTP method is defined as Safe (should not change server state)?",
     "options": [
       "POST",
@@ -1369,21 +913,7 @@
     ]
   },
   {
-    "id": 97,
-    "question": "What is a major danger of using a NATURAL JOIN in production database code?",
-    "options": [
-      "It is significantly slower than an INNER JOIN.",
-      "It requires a composite primary key to function correctly.",
-      "Adding a column with the same name to both tables later will silently change the join condition.",
-      "It automatically excludes rows with NULL values in any column."
-    ],
-    "correctAnswer": "Adding a column with the same name to both tables later will silently change the join condition.",
-    "topics": [
-      "sql"
-    ]
-  },
-  {
-    "id": 98,
+    "id": 65,
     "question": "In a JSON document, which syntax rule differs from standard JavaScript object literals?",
     "options": [
       "Keys must be enclosed in double quotes.",
@@ -1397,7 +927,7 @@
     ]
   },
   {
-    "id": 99,
+    "id": 66,
     "question": "Which REST constraint requires each request to contain all necessary information (no stored client context)?",
     "options": [
       "Layered System",
@@ -1412,7 +942,7 @@
     ]
   },
   {
-    "id": 100,
+    "id": 67,
     "question": "Which message service style calls named operations like createUser() via a single endpoint?",
     "options": [
       "REST",
@@ -1427,7 +957,7 @@
     ]
   },
   {
-    "id": 101,
+    "id": 68,
     "question": "Which HTTP status code should be returned when a new resource is successfully created on the server?",
     "options": [
       "200 OK",
@@ -1442,7 +972,7 @@
     ]
   },
   {
-    "id": 102,
+    "id": 69,
     "question": "In the Richardson Maturity Model, what distinguishes a Level 1 API from a Level 0 API?",
     "options": [
       "The use of HTTP verbs like GET and DELETE",
@@ -1457,7 +987,7 @@
     ]
   },
   {
-    "id": 103,
+    "id": 70,
     "question": "Which REST constraint is most directly addressed by Richardson Maturity Level 3 (HATEOAS)?",
     "options": [
       "Statelessness",
@@ -1471,7 +1001,7 @@
     ]
   },
   {
-    "id": 104,
+    "id": 71,
     "question": "When running local LLMs with Ollama, what is the primary purpose of Quantization in model files?",
     "options": [
       "To increase the creative randomness of the model's output",
@@ -1485,7 +1015,7 @@
     ]
   },
   {
-    "id": 105,
+    "id": 72,
     "question": "In the Model Context Protocol (MCP), which entity is responsible for actually executing a tool?",
     "options": [
       "The LLM (Large Language Model)",
@@ -1499,7 +1029,7 @@
     ]
   },
   {
-    "id": 106,
+    "id": 73,
     "question": "Which concept describes how CouchDB handles concurrent updates without traditional table-level locks?",
     "options": [
       "Pessimistic Concurrency Control",
@@ -1514,7 +1044,7 @@
     ]
   },
   {
-    "id": 107,
+    "id": 74,
     "question": "According to the CAP Theorem, which two properties does CouchDB prioritize during a network partition?",
     "options": [
       "Consistency and Availability",
@@ -1529,7 +1059,7 @@
     ]
   },
   {
-    "id": 108,
+    "id": 75,
     "question": "In Express.js middleware, what happens if a function does not call next() and does not send a response?",
     "options": [
       "The request is automatically passed to the next route handler",
@@ -1544,7 +1074,7 @@
     ]
   },
   {
-    "id": 109,
+    "id": 76,
     "question": "Which security risk is associated with autonomous agents like OpenClaw?",
     "options": [
       "They only run on proprietary cloud servers",
@@ -1558,7 +1088,7 @@
     ]
   },
   {
-    "id": 110,
+    "id": 77,
     "question": "What is the specific role of the cors middleware package in a Node/Express application?",
     "options": [
       "To encrypt data transmitted between the client and server",
@@ -1573,7 +1103,7 @@
     ]
   },
   {
-    "id": 111,
+    "id": 78,
     "question": "In local LLMs like DeepSeek-R1, what is the function of Chain of Thought (CoT) inside <think> tags?",
     "options": [
       "To hide the model's source code from the end user",
