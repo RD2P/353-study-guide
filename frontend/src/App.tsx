@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import cachedTopics from './data/topics.json'
 import cachedQuestions from './data/questions.json'
 import AdminPage from './AdminPage'
-
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:81'
 
 type Question = {
   question: string
@@ -36,24 +34,13 @@ function QuizApp() {
   const [phase, setPhase] = useState<'lobby' | 'quiz'>('lobby')
 
   const [questions, setQuestions] = useState<Question[]>([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selected, setSelected] = useState<string | null>(null)
   const [score, setScore] = useState(0)
   const [skipped, setSkipped] = useState(0)
   const [finished, setFinished] = useState(false)
 
-  // Fetch topic list once on mount
-  useEffect(() => {
-    fetch(`${API_URL}/topics`)
-      .then(res => {
-        if (!res.ok) throw new Error(`Server error: ${res.status}`)
-        return res.json()
-      })
-      .then((data: Topic[]) => setTopics(data))
-      .catch(() => { /* topics list is non-fatal */ })
-  }, [])
+
 
   function toggleTopic(slug: string) {
     setSelectedSlugs(prev => {
@@ -65,50 +52,17 @@ function QuizApp() {
 
   function startQuiz(slugs: string[]) {
     setActiveSlugs(slugs)
-    setError(null)
     setCurrentIndex(0)
     setSelected(null)
     setScore(0)
     setSkipped(0)
     setFinished(false)
 
-    // Show cached questions immediately so the quiz starts with no delay
-    const cached = (cachedQuestions as Question[]).filter(q =>
+    const filtered = (cachedQuestions as Question[]).filter(q =>
       slugs.length === 0 || q.topics.some(t => slugs.includes(t))
     )
-    if (cached.length > 0) {
-      setQuestions(shuffle(cached))
-      setLoading(false)
-      setPhase('quiz')
-    } else {
-      setLoading(true)
-    }
-
-    // Fetch fresh data from backend silently; replace cache when it responds
-    const url = slugs.length
-      ? `${API_URL}/questions?topics=${slugs.join(',')}`
-      : `${API_URL}/questions`
-
-    fetch(url)
-      .then(res => {
-        if (!res.ok) throw new Error(`Server error: ${res.status}`)
-        return res.json()
-      })
-      .then((data: Question[]) => {
-        // Only replace if cache had nothing, avoids reshuffling mid-quiz
-        if (cached.length === 0) {
-          setQuestions(shuffle(data))
-          setLoading(false)
-          setPhase('quiz')
-        }
-      })
-      .catch(err => {
-        // Only surface the error if we have nothing to show
-        if (cached.length === 0) {
-          setError(err.message)
-          setLoading(false)
-        }
-      })
+    setQuestions(shuffle(filtered))
+    setPhase('quiz')
   }
 
   const q: Question = questions[currentIndex]
@@ -163,32 +117,6 @@ function QuizApp() {
       <p className="site-subtitle">Study Guide</p>
     </header>
   )
-
-  if (loading) {
-    const label = activeSlugs.length
-      ? topics.filter(t => activeSlugs.includes(t.slug)).map(t => t.name).join(', ')
-      : 'All Topics'
-    return (
-      <div className="page-wrapper">
-        {header}
-        <div className="quiz-container">
-          <p className="status-msg">Loading questions for <strong>{label}</strong>...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className="page-wrapper">
-        {header}
-        <div className="quiz-container">
-          <p className="status-msg error-msg">Error: {error}</p>
-          <button className="next-btn" onClick={handleChangeTopic}>Back to Topics</button>
-        </div>
-      </div>
-    )
-  }
 
   if (phase === 'lobby') {
     const allSelected = selectedSlugs.size === 0
