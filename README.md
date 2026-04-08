@@ -59,8 +59,9 @@ VITE_API_URL=http://localhost:81
 
 ### 3. Build and start the containers
 
+Add the backend env file, else docker can't interpolate env placeholders in the compose file.
 ```bash
-docker compose up -d
+docker compose --env-file backend/.env up -d
 ```
 
 This builds the frontend and backend images and starts all three services
